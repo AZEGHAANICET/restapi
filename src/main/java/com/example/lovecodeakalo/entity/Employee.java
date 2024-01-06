@@ -1,10 +1,9 @@
 package com.example.lovecodeakalo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "employee")
 public class Employee {
 
 
@@ -34,6 +33,16 @@ public class Employee {
         this.email = email;
     }
 
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
