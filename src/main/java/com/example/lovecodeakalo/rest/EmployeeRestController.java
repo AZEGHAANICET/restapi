@@ -3,6 +3,7 @@ package com.example.lovecodeakalo.rest;
 import com.example.lovecodeakalo.dao.EmployeeDAO;
 import com.example.lovecodeakalo.dao.EmployeeDAOJpaImpl;
 import com.example.lovecodeakalo.entity.Employee;
+import com.example.lovecodeakalo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +15,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class EmployeeRestController {
 
-    private EmployeeDAO employeeDAO;
+    private EmployeeService employeeService;
     // quick and dirty: inject employee dao
 
     @Autowired
-    public EmployeeRestController(EmployeeDAO theEmployeeDAO){
-        employeeDAO = theEmployeeDAO;
+    public EmployeeRestController(EmployeeService theEmployeeService){
+       this.employeeService = theEmployeeService;
 
     }
 
@@ -28,6 +29,6 @@ public class EmployeeRestController {
 
     @GetMapping("/employees")
     public List<Employee> findAll(){
-        return employeeDAO.findAll();
+        return  employeeService.findAll();
     }
 }
